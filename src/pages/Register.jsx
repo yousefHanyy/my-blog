@@ -4,7 +4,7 @@ function Register() {
   return (
     <div className="flex justify-center mt-15">
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-        <legend className="fieldset-legend">Sign up</legend>
+        <legend className="fieldset-legend text-lg">Sign up</legend>
 
         <label className="label">Name</label>
         <input type="name" className="input" placeholder="Name" />

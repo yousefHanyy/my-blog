@@ -1,0 +1,45 @@
+{
+  "users": [],
+  "posts": [
+    {
+      "id": "1",
+      "title": "Welcome to my blog",
+      "description": "This is the first post on my new blog. Hope you like it!",
+      "image": "https://picsum.photos/seed/blog1/600/400",
+      "author": "Admin",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Learning React is fun",
+      "description": "React makes building UIs so much easier and more organized.",
+      "image": "https://picsum.photos/seed/blog2/600/400",
+      "author": "Yousef",
+      "userId": "2"
+    },
+    {
+      "id": "3",
+      "title": "Learning React is fun",
+      "description": "React makes building UIs so much easier and more organized.",
+      "image": "https://picsum.photos/seed/blog2/600/400",
+      "author": "Yousef",
+      "userId": "2"
+    },
+    {
+      "id": "4",
+      "title": "Learning React is fun",
+      "description": "React makes building UIs so much easier and more organized.",
+      "image": "https://picsum.photos/seed/blog2/600/400",
+      "author": "Yousef",
+      "userId": "2"
+    },
+    {
+      "id": "5",
+      "title": "Learning React is fun",
+      "description": "React makes building UIs so much easier and more organized.",
+      "image": "https://picsum.photos/seed/blog2/600/400",
+      "author": "Yousef",
+      "userId": "2"
+    }
+  ]
+}
