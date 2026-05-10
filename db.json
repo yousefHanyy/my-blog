@@ -1,5 +1,24 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "yousef11222@gmail.com",
+      "password": "$2a$10$BUHf7XaIUWL1g0tHRKqiV.GSbPeemrR9vnit8avuJE9Cu7.F6lLfW",
+      "name": "yousef",
+      "id": 1
+    },
+    {
+      "email": "ahmed@gmail.com",
+      "password": "$2a$10$t5xLGaI7ySUP7HrGFvAx/.C3pCl4r1EIYo0pkn79rQEI4TR3w/UFy",
+      "name": "yousef",
+      "id": 2
+    },
+    {
+      "email": "loay@gmail.com",
+      "password": "$2a$10$VZR5zh8kjl/ZkUWubAgkOe4WVlWfXEtQakRd1O1XRWnF99DWxLEAq",
+      "name": "loay",
+      "id": 3
+    }
+  ],
   "posts": [
     {
       "id": "1",
@@ -40,6 +59,14 @@
       "image": "https://picsum.photos/seed/blog2/600/400",
       "author": "Yousef",
       "userId": "2"
+    },
+    {
+      "title": "sasd",
+      "description": "asdasdasd",
+      "image": "https://placehold.co/600x400",
+      "author": "loay",
+      "userId": 3,
+      "id": "nrco-nA"
     }
   ]
 }
