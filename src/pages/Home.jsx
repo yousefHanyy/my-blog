@@ -11,20 +11,18 @@ function Home() {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
-  const fetchPosts = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get("http://localhost:5000/posts");
-      setPosts(res.data);
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to load posts.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchPosts = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("http://localhost:5000/posts");
+        setPosts(res.data);
+      } catch (err) {
+        console.error(err);
+        toast.error("Failed to load posts.");
+      }
+      setLoading(false);
+    };
     fetchPosts();
   }, []);
 
@@ -59,7 +57,6 @@ function Home() {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Post removed successfully.");
-      fetchPosts();
     } catch (err) {
       toast.error("Deletion failed. Access denied.");
       console.error(err);
@@ -85,10 +82,7 @@ function Home() {
             <figure>
               <img
                 className="h-48 w-full object-cover"
-                src={
-                  post.image ||
-                  "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                }
+                src={post.image || "https://placehold.co/600x400"}
                 alt={post.title}
               />
             </figure>

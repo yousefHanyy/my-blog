@@ -10,6 +10,7 @@ function AddPost() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +61,7 @@ function AddPost() {
         });
         toast.success("Post created successfully!");
       }
-
+      // console.log("posting");
       navigate("/");
     } catch (err) {
       toast.error(isEdit ? "Update failed." : "Creation failed.");
@@ -100,7 +101,7 @@ function AddPost() {
           required
           type="url"
           className="input input-bordered w-full"
-          value={image}
+          value={image ? image : "https://placehold.co/600x400"}
           onChange={(e) => setImage(e.target.value)}
           placeholder="https://example.com/image.jpg"
         />
