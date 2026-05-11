@@ -26,35 +26,13 @@ function Home() {
     fetchPosts();
   }, []);
 
-  const confirmDelete = (postId) => {
-    toast.warn(
-      ({ closeToast }) => (
-        <div>
-          <p className="mb-2 font-bold">Delete this post?</p>
-          <div className="flex gap-2">
-            <button
-              className="btn btn-xs btn-error"
-              onClick={() => {
-                handleDelete(postId);
-                closeToast();
-              }}
-            >
-              Confirm
-            </button>
-            <button className="btn btn-xs btn-ghost" onClick={closeToast}>
-              Cancel
-            </button>
-          </div>
-        </div>
-      ),
-      { autoClose: false, closeOnClick: false },
-    );
-  };
+  const [postToDelete, setPostToDelete] = useState(null);
 
   const handleDelete = async (postId) => {
     // optimistic update:
     const previousPosts = [...posts];
     setPosts(posts.filter((p) => p.id !== postId));
+    setPostToDelete(null);
     //-------------------------
     try {
       await axios.delete(`http://localhost:5000/posts/${postId}`, {
@@ -109,7 +87,7 @@ function Home() {
                       Edit
                     </button>
                     <button
-                      onClick={() => confirmDelete(post.id)}
+                      onClick={() => setPostToDelete(post.id)}
                       className="btn btn-xs btn-error btn-outline"
                     >
                       Remove
@@ -120,6 +98,36 @@ function Home() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Delete Confirmation Modal */}
+      <input
+        type="checkbox"
+        id="delete_modal"
+        className="modal-toggle"
+        // converts null to false and id to true
+        checked={!!postToDelete}
+        onChange={() => setPostToDelete(null)}
+      />
+      <div className="modal" role="dialog">
+        <div className="modal-box">
+          <h3 className="text-lg font-bold">Confirm Deletion</h3>
+          <p className="py-4">Are you sure you want to remove this post?</p>
+          <div className="modal-action">
+            <button
+              className="btn btn-error"
+              onClick={() => handleDelete(postToDelete)}
+            >
+              Delete
+            </button>
+            <button className="btn" onClick={() => setPostToDelete(null)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+        <label className="modal-backdrop" htmlFor="delete_modal">
+          Close
+        </label>
       </div>
     </div>
   );
