@@ -52,12 +52,19 @@ function Home() {
   };
 
   const handleDelete = async (postId) => {
+    // optimistic update:
+    const previousPosts = [...posts];
+    setPosts(posts.filter((p) => p.id !== postId));
+    //-------------------------
     try {
       await axios.delete(`http://localhost:5000/posts/${postId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Post removed successfully.");
     } catch (err) {
+      // incase deletion fails server side, we have to roll back the ui due to the optimistic update:
+      setPosts(previousPosts);
+
       toast.error("Deletion failed. Access denied.");
       console.error(err);
     }
@@ -72,7 +79,7 @@ function Home() {
 
   return (
     <div className="p-10">
-      <h1 className="text-3xl font-bold mb-8 text-center">Blog Posts</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">All Posts</h1>
       <div className="flex justify-center gap-6 flex-wrap">
         {posts.map((post) => (
           <div

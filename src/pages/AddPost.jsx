@@ -61,7 +61,6 @@ function AddPost() {
         });
         toast.success("Post created successfully!");
       }
-      // console.log("posting");
       navigate("/");
     } catch (err) {
       toast.error(isEdit ? "Update failed." : "Creation failed.");
@@ -101,7 +100,7 @@ function AddPost() {
           required
           type="url"
           className="input input-bordered w-full"
-          value={image ? image : "https://placehold.co/600x400"}
+          value={image || "https://placehold.co/600x400"}
           onChange={(e) => setImage(e.target.value)}
           placeholder="https://example.com/image.jpg"
         />
