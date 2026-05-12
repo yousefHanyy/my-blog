@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 function Home() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [postToDelete, setPostToDelete] = useState(null);
+
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -25,8 +27,6 @@ function Home() {
     };
     fetchPosts();
   }, []);
-
-  const [postToDelete, setPostToDelete] = useState(null);
 
   const handleDelete = async (postId) => {
     // optimistic update:
@@ -48,47 +48,78 @@ function Home() {
     }
   };
 
+  const formatDate = (date) => {
+    if (!date) return "JAN 01";
+    const d = new Date(date);
+    return `${d.toLocaleString("en-US", { month: "short" }).toUpperCase()} ${String(d.getDate()).padStart(2, "0")}`;
+  };
+
   if (loading)
     return (
-      <div className="flex items-center justify-center h-100">
+      <div className="flex items-center justify-center h-screen">
         <span className="loading loading-spinner loading-xl"></span>
       </div>
     );
 
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold mb-8 text-center">All Posts</h1>
-      <div className="flex justify-center gap-6 flex-wrap">
+    <div className="px-2 sm:px-4 md:px-8 lg:px-60 py-8 sm:py-10 md:py-12 bg-white">
+      {/* Title */}
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1d1b19] mb-8 sm:mb-10 md:mb-12 font-['Space_Mono']  leading-10">
+        Latest Entries
+      </h1>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-10 md:mb-12">
         {posts.map((post) => (
           <div
             key={post.id}
-            className="card bg-base-100 w-96 shadow-sm hover:transition hover:shadow-lg border border-base-200"
+            className="bg-[#fff8f5] border-2 border-[#1d1b19] overflow-hidden hover:shadow-lg transition-shadow flex flex-col"
           >
-            <figure>
+            {/* Image Section */}
+            <div className="bg-[#e8e1de] border-b-2 border-[#1d1b19] h-40 sm:h-44 md:h-48 lg:h-56 overflow-hidden shrink-0">
               <img
-                className="h-48 w-full object-cover"
+                className="w-full h-full object-cover"
                 src={post.image || "https://placehold.co/600x400"}
                 alt={post.title}
               />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{post.title}</h2>
-              <p className="line-clamp-3">{post.description}</p>
+            </div>
 
-              <div className="card-actions justify-between items-center mt-4">
-                <span className="badge badge-outline">By {post.author}</span>
+            {/* Content Section */}
+            <div className="p-3 sm:p-3.5 md:p-4 flex flex-col gap-2 sm:gap-2.5 md:gap-3 grow">
+              {/*  Date */}
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <span className="text-xs text-[#6f5b3c] font-medium font-['Liberation_Serif'] leading-4">
+                  {formatDate(post.createdAt)}
+                </span>
+              </div>
+
+              {/* Title */}
+              <h2 className="text-base sm:text-lg md:text-xl font-bold text-[#1d1b19]  font-['Space_Mono'] leading-7 line-clamp-3">
+                {post.title}
+              </h2>
+
+              {/* Description */}
+              <p className="text-sm sm:text-sm text-[#434840] line-clamp-2 leading-5 font-['Nimbus_Sans']">
+                {post.description}
+              </p>
+
+              {/* Author and Actions */}
+              <div className="flex items-center justify-between gap-2 mt-auto pt-2 flex-wrap">
+                <span className="text-xs text-[#6f5b3c] italic font-['Liberation_Serif'] min-w-0">
+                  By {post.author}
+                </span>
 
                 {user && post.userId === user.id && (
-                  <div className="flex gap-2">
+                  <div className="flex gap-1.5 sm:gap-2 shrink-0">
                     <button
                       onClick={() => navigate(`/edit-post/${post.id}`)}
-                      className="btn btn-xs btn-info btn-outline"
+                      className="text-xs px-2 sm:px-2.5 py-1 border border-[#43643d] text-[#43643d] rounded hover:bg-[#43643d] hover:text-white transition-colors cursor-pointer whitespace-nowrap"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => setPostToDelete(post.id)}
-                      className="btn btn-xs btn-error btn-outline"
+                      className="text-xs px-2 sm:px-2.5 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors cursor-pointer whitespace-nowrap"
                     >
                       Remove
                     </button>
@@ -100,27 +131,64 @@ function Home() {
         ))}
       </div>
 
+      {/* Load More Button */}
+      {/* Future implementation maybe? */}
+      {/* {posts.length > 0 && (
+        <div className="flex justify-center">
+          <button className="bg-[#43643d] border-2 border-[#1d1b19] text-white px-6 sm:px-8 py-3 md:py-4 font-bold uppercase text-xs sm:text-sm flex items-center gap-2 hover:bg-[#354c2d] transition-colors font-['Liberation_Serif'] flex-shrink-0">
+            Load More Entries
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </button>
+        </div>
+      )} */}
+
+      {/* No Posts */}
+      {posts.length === 0 && !loading && (
+        <div className="text-center py-12">
+          <p className="text-gray-500 text-lg">No posts found.</p>
+        </div>
+      )}
+
       {/* Delete Confirmation Modal */}
       <input
         type="checkbox"
         id="delete_modal"
         className="modal-toggle"
-        // converts null to false and id to true
         checked={!!postToDelete}
         onChange={() => setPostToDelete(null)}
       />
       <div className="modal" role="dialog">
-        <div className="modal-box">
-          <h3 className="text-lg font-bold">Confirm Deletion</h3>
-          <p className="py-4">Are you sure you want to remove this post?</p>
-          <div className="modal-action">
+        <div className="modal-box bg-white border-2 border-[#1d1b19] max-w-sm sm:max-w-md">
+          <h3 className="text-lg font-bold text-[#1d1b19] font-['Space_Mono']">
+            Confirm Deletion
+          </h3>
+          <p className="py-4 text-[#434840] text-sm">
+            Are you sure you want to remove this post?
+          </p>
+          <div className="modal-action flex gap-2">
             <button
-              className="btn btn-error"
+              className="px-4 py-2 bg-red-500 text-white rounded font-bold hover:bg-red-600 transition-colors cursor-pointer text-sm"
               onClick={() => handleDelete(postToDelete)}
             >
               Delete
             </button>
-            <button className="btn" onClick={() => setPostToDelete(null)}>
+            <button
+              className="px-4 py-2 border-2 border-[#1d1b19] text-[#1d1b19] rounded cursor-pointer font-bold hover:bg-gray-100 transition-colors text-sm"
+              onClick={() => setPostToDelete(null)}
+            >
               Cancel
             </button>
           </div>

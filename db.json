@@ -27,20 +27,12 @@
   ],
   "posts": [
     {
-      "id": "1",
-      "title": "Welcome to my blog",
-      "description": "This is the first post on my new blog. Hope you like it!",
-      "image": "https://picsum.photos/seed/blog1/600/400",
-      "author": "Admin",
-      "userId": "1"
-    },
-    {
-      "title": "...",
+      "title": "يا رب",
       "description": "يا رب فك الضيقة",
-      "image": "https://i.pinimg.com/1200x/bf/85/ba/bf85ba7c64487938afeb9b8099bc99cf.jpg",
+      "image": "https://i.imgflip.com/4/5ldgwv.jpg",
       "author": "yousef",
       "userId": 2,
-      "id": "adM9vOx"
+      "id": 1
     }
   ]
 }

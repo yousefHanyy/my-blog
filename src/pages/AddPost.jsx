@@ -48,6 +48,7 @@ function AddPost() {
         image,
         author: user.name,
         userId: user.id,
+        createdAt: new Date().toISOString(),
       };
 
       if (isEdit) {
