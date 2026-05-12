@@ -17,6 +17,12 @@
       "password": "$2a$10$VZR5zh8kjl/ZkUWubAgkOe4WVlWfXEtQakRd1O1XRWnF99DWxLEAq",
       "name": "loay",
       "id": 3
+    },
+    {
+      "email": "zeyad@gmail.com",
+      "password": "$2a$10$eUaTWBO9n8F/ggNTP5JQouc83TwiuHQkK05nv.BIt7z5oQDzAb4T2",
+      "name": "zeyad",
+      "id": 4
     }
   ],
   "posts": [

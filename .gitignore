@@ -9,7 +9,7 @@ lerna-debug.log*
 1.png
 2.png
 3.png
-
+DESIGN.md
 node_modules
 dist
 dist-ssr
