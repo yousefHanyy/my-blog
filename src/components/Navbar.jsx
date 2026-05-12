@@ -57,7 +57,7 @@ function Navbar() {
           <div className="hidden md:flex gap-6 items-center flex-1 justify-center">
             <NavLink
               to="/"
-              className={`text-sm font-['Liberation_Serif'] transition-colors ${
+              className={`text-sm font-['Liberation_Serif'] font-bold leading-5 transition-colors ${
                 isArticles
                   ? "text-[#43643d] border-b-2 border-[#43643d] pb-1.5"
                   : "text-[#434840] hover:text-[#43643d]"
@@ -67,13 +67,13 @@ function Navbar() {
             </NavLink>
             <a
               href="#"
-              className="text-sm text-[#434840] font-['Liberation_Serif'] hover:text-[#43643d] transition-colors"
+              className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:text-[#43643d] transition-colors"
             >
               Authors
             </a>
             <a
               href="#"
-              className="text-sm text-[#434840] font-['Liberation_Serif'] hover:text-[#43643d] transition-colors"
+              className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:text-[#43643d] transition-colors"
             >
               About
             </a>
@@ -131,7 +131,7 @@ function Navbar() {
               <NavLink
                 to="/"
                 onClick={() => setMenuOpen(false)}
-                className={`text-sm font-['Liberation_Serif'] transition-colors px-2 py-2 rounded ${
+                className={`text-sm font-['Liberation_Serif'] font-bold leading-5 transition-colors px-2 py-2 rounded ${
                   isArticles
                     ? "text-[#43643d] bg-gray-100 border-l-2 border-[#43643d]"
                     : "text-[#434840] hover:bg-gray-100"
@@ -141,13 +141,13 @@ function Navbar() {
               </NavLink>
               <a
                 href="#"
-                className="text-sm text-[#434840] font-['Liberation_Serif'] hover:bg-gray-100 px-2 py-2 rounded transition-colors"
+                className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:bg-gray-100 px-2 py-2 rounded transition-colors"
               >
                 Authors
               </a>
               <a
                 href="#"
-                className="text-sm text-[#434840] font-['Liberation_Serif'] hover:bg-gray-100 px-2 py-2 rounded transition-colors"
+                className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:bg-gray-100 px-2 py-2 rounded transition-colors"
               >
                 About
               </a>
@@ -162,7 +162,7 @@ function Navbar() {
                   <NavLink
                     to="/add-post"
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-2 text-sm text-[#43643d] font-['Liberation_Serif'] hover:bg-gray-100 px-2 py-2 rounded transition-colors"
+                    className="flex items-center gap-2 text-sm text-[#43643d] font-['Liberation_Serif'] font-bold leading-5 hover:bg-gray-100 px-2 py-2 rounded transition-colors"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
