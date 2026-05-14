@@ -62,20 +62,17 @@ function Home() {
     );
 
   return (
-    <div className="px-2 sm:px-4 md:px-8 lg:px-60 py-8 sm:py-10 md:py-12 bg-white">
-      {/* Title */}
+    <div className="px-2 sm:px-4 md:px-8 lg:px-60 py-8 sm:py-10 md:py-12">
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1d1b19] mb-8 sm:mb-10 md:mb-12 font-['Space_Mono']  leading-10">
         Latest Entries
       </h1>
 
-      {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-10 md:mb-12">
         {posts.map((post) => (
           <div
             key={post.id}
             className="bg-[#fff8f5] border-2 border-[#1d1b19] overflow-hidden hover:shadow-lg transition-shadow flex flex-col"
           >
-            {/* Image Section */}
             <div className="bg-[#e8e1de] border-b-2 border-[#1d1b19] h-40 sm:h-44 md:h-48 lg:h-56 overflow-hidden shrink-0">
               <img
                 className="w-full h-full object-cover"
@@ -84,28 +81,23 @@ function Home() {
               />
             </div>
 
-            {/* Content Section */}
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col gap-2 sm:gap-2.5 md:gap-3 grow">
-              {/*  Date */}
               <div className="flex items-center justify-between gap-2 flex-wrap">
-                <span className="text-xs text-[#6f5b3c] font-medium font-['Liberation_Serif'] leading-4">
+                <span className="text-xs text-[#6f5b3c] font-medium font-['Source_Sans_3'] leading-4">
                   {formatDate(post.createdAt)}
                 </span>
               </div>
 
-              {/* Title */}
               <h2 className="text-base sm:text-lg md:text-xl font-bold text-[#1d1b19]  font-['Space_Mono'] leading-7 line-clamp-3">
                 {post.title}
               </h2>
 
-              {/* Description */}
               <p className="text-sm sm:text-sm text-[#434840] line-clamp-2 leading-5 font-['Nimbus_Sans']">
                 {post.description}
               </p>
 
-              {/* Author and Actions */}
               <div className="flex items-center justify-between gap-2 mt-auto pt-2 flex-wrap">
-                <span className="text-xs text-[#6f5b3c] italic font-['Liberation_Serif'] min-w-0">
+                <span className="text-xs text-[#6f5b3c] italic font-['Source_Sans_3'] min-w-0">
                   By {post.author}
                 </span>
 
@@ -131,38 +123,12 @@ function Home() {
         ))}
       </div>
 
-      {/* Load More Button */}
-      {/* Future implementation maybe? */}
-      {/* {posts.length > 0 && (
-        <div className="flex justify-center">
-          <button className="bg-[#43643d] border-2 border-[#1d1b19] text-white px-6 sm:px-8 py-3 md:py-4 font-bold uppercase text-xs sm:text-sm flex items-center gap-2 hover:bg-[#354c2d] transition-colors font-['Liberation_Serif'] flex-shrink-0">
-            Load More Entries
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="2"
-              stroke="currentColor"
-              className="w-4 h-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </button>
-        </div>
-      )} */}
-
-      {/* No Posts */}
       {posts.length === 0 && !loading && (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg">No posts found.</p>
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       <input
         type="checkbox"
         id="delete_modal"

@@ -70,46 +70,90 @@ function AddPost() {
   };
 
   return (
-    <div className="flex justify-center mt-10 px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="card bg-base-200 w-full max-w-md shadow-xl p-6 border border-base-300"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">
-          {isEdit ? "Edit Post" : "Add New Post"}
-        </h2>
+    <div className="flex justify-center items-center  px-2 sm:px-4 py-8">
+      <div className="w-full max-w-sm md:max-w-md bg-[#fff8f5] border-2 border-[#1d1b19] overflow-hidden">
+        <div className="h-2 bg-[#1d1b19] pattern-dots"></div>
 
-        <label className="label font-semibold">Title</label>
-        <input
-          required
-          type="text"
-          className="input input-bordered w-full"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <div className="p-6 md:p-8">
+          <div className="mb-6 md:mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold text-[#1d1b19] mb-2 font-['Space_Mono']">
+              {isEdit ? "Update Entry" : "Create Entry"}
+            </h1>
+            <p className="text-sm text-[#434840] font-['Source_Sans_3']">
+              {isEdit
+                ? "Modify your post details."
+                : "Share your thoughts with the world."}
+            </p>
+          </div>
 
-        <label className="label font-semibold">Description</label>
-        <textarea
-          required
-          className="textarea textarea-bordered h-24 w-full"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
+          <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+            <div>
+              <label className="block text-xs md:text-sm font-bold text-[#43643d] uppercase tracking-wide mb-2 font-['Source_Sans_3']">
+                Title
+              </label>
+              <input
+                required
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter post title..."
+                className="w-full px-3 py-2 md:py-3 border-2 border-[#1d1b19] text-sm text-[#1d1b19] placeholder-gray-400 focus:outline-none focus:bg-[#e8e1de]"
+              />
+            </div>
 
-        <label className="label font-semibold">Image URL</label>
-        <input
-          required
-          type="url"
-          className="input input-bordered w-full"
-          value={image || "https://placehold.co/600x400"}
-          onChange={(e) => setImage(e.target.value)}
-          placeholder="https://example.com/image.jpg"
-        />
+            <div>
+              <label className="block text-xs md:text-sm font-bold text-[#43643d] uppercase tracking-wide mb-2 font-['Source_Sans_3']">
+                Description
+              </label>
+              <textarea
+                required
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Write your post content..."
+                rows="5"
+                className="w-full px-3 py-2 md:py-3 border-2 border-[#1d1b19] text-sm text-[#1d1b19] placeholder-gray-400 focus:outline-none focus:bg-[#e8e1de] resize-none"
+              />
+            </div>
 
-        <button type="submit" className="btn btn-primary mt-6 w-full">
-          {isEdit ? "Update Post" : "Create Post"}
-        </button>
-      </form>
+            <div>
+              <label className="block text-xs md:text-sm font-bold text-[#43643d] uppercase tracking-wide mb-2 font-['Source_Sans_3']">
+                Image URL
+              </label>
+              <input
+                required
+                type="url"
+                value={image || "https://placehold.co/600x400"}
+                onChange={(e) => setImage(e.target.value)}
+                placeholder="https://example.com/image.jpg"
+                className="w-full px-3 py-2 md:py-3 border-2 border-[#1d1b19] text-sm text-[#1d1b19] placeholder-gray-400 focus:outline-none focus:bg-[#e8e1de]"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 md:py-4 bg-[#43643d] border-2 border-[#1d1b19] text-white font-bold uppercase text-sm tracking-wide hover:bg-[#354c2d] transition-colors font-['JetBrains_Mono'] cursor-pointer mt-6 md:mt-8"
+            >
+              {isEdit ? "Update Post" : "Publish Entry"}
+            </button>
+          </form>
+
+          <div className="flex items-center gap-3 my-5 md:my-6">
+            <div className="flex-1 h-0.5 bg-[#1d1b19]"></div>
+            <span className="text-xs text-[#6f5b3c] font-['Source_Sans_3']">
+              or
+            </span>
+            <div className="flex-1 h-0.5 bg-[#1d1b19]"></div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="w-full py-2 md:py-3 border-2 border-[#1d1b19] text-[#1d1b19] font-bold uppercase text-sm tracking-wide hover:bg-gray-100 transition-colors font-['JetBrains_Mono'] cursor-pointer"
+          >
+            Back to Articles
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

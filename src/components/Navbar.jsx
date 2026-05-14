@@ -1,10 +1,10 @@
-import { NavLink, useNavigate, useLocation } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
 function Navbar() {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,8 +16,6 @@ function Navbar() {
     navigate("/login");
     setMenuOpen(false);
   };
-
-  const isArticles = location.pathname === "/";
 
   return (
     <div className="bg-[#fff8f5] border-b-2 border-[#1d1b19]">
@@ -52,32 +50,6 @@ function Navbar() {
               />
             </svg>
           </button>
-
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex gap-6 items-center flex-1 justify-center">
-            <NavLink
-              to="/"
-              className={`text-sm font-['Liberation_Serif'] font-bold leading-5 transition-colors ${
-                isArticles
-                  ? "text-[#43643d] border-b-2 border-[#43643d] pb-1.5"
-                  : "text-[#434840] hover:text-[#43643d]"
-              }`}
-            >
-              Articles
-            </NavLink>
-            <a
-              href="#"
-              className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:text-[#43643d] transition-colors"
-            >
-              Authors
-            </a>
-            <a
-              href="#"
-              className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:text-[#43643d] transition-colors"
-            >
-              About
-            </a>
-          </div>
 
           {/* Desktop Account */}
           <div className="hidden md:flex items-center gap-4">
@@ -128,32 +100,6 @@ function Navbar() {
         {menuOpen && (
           <div className="md:hidden pb-4 border-t border-[#1d1b19]">
             <div className="flex flex-col gap-3 pt-4">
-              <NavLink
-                to="/"
-                onClick={() => setMenuOpen(false)}
-                className={`text-sm font-['Liberation_Serif'] font-bold leading-5 transition-colors px-2 py-2 rounded ${
-                  isArticles
-                    ? "text-[#43643d] bg-gray-100 border-l-2 border-[#43643d]"
-                    : "text-[#434840] hover:bg-gray-100"
-                }`}
-              >
-                Articles
-              </NavLink>
-              <a
-                href="#"
-                className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:bg-gray-100 px-2 py-2 rounded transition-colors"
-              >
-                Authors
-              </a>
-              <a
-                href="#"
-                className="text-sm text-[#434840] font-['Liberation_Serif'] font-bold leading-5 hover:bg-gray-100 px-2 py-2 rounded transition-colors"
-              >
-                About
-              </a>
-
-              <div className="border-t border-[#1d1b19] my-2"></div>
-
               {token ? (
                 <>
                   <span className="text-xs italic text-gray-600 px-2">
@@ -182,7 +128,7 @@ function Navbar() {
                   </NavLink>
                   <button
                     onClick={handleLogout}
-                    className="text-sm px-3 py-2 border border-[#43643d] text-[#43643d] rounded hover:bg-[#43643d] hover:text-white transition-colors text-left cursor-pointer"
+                    className="text-sm px-3 py-2 border  border-[#43643d] text-[#43643d] rounded hover:bg-[#43643d] hover:text-white transition-colors text-center cursor-pointer"
                   >
                     Logout
                   </button>

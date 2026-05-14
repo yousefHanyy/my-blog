@@ -6,18 +6,22 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AddPost from "./pages/AddPost";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/add-post" element={<AddPost />} />
-        <Route path="/edit-post/:id" element={<AddPost />} />
-      </Routes>
+      <main className="grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/add-post" element={<AddPost />} />
+          <Route path="/edit-post/:id" element={<AddPost />} />
+        </Routes>
+      </main>
+      <Footer />
       <ToastContainer />
     </div>
   );
