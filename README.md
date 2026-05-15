@@ -1,16 +1,55 @@
-# React + Vite
+# My Blog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured blog application built with React, Vite, and Tailwind CSS. This project includes user authentication and CRUD operations for blog posts, using `json-server` as a mock backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **User Authentication**: Register and login with secure authentication (handled by `json-server-auth`).
+- **Post Management**: View all blog posts, create new posts, and edit existing ones.
+- **Responsive Design**: Modern UI built with Tailwind CSS and DaisyUI.
+- **Real-time Notifications**: Integrated `react-toastify` for user feedback.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 19, Vite, Tailwind CSS, DaisyUI
+- **Routing**: React Router 7
+- **HTTP Client**: Axios
+- **Backend**: JSON Server + JSON Server Auth (Mock API)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js installed on your machine.
+
+### Installation
+
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Project
+
+You need to run both the frontend and the backend simultaneously.
+
+#### 1. Start the Backend (API)
+The backend runs on port 5000 and handles authentication.
+```bash
+npm run backend
+```
+
+#### 2. Start the Frontend (Vite)
+Open a new terminal and run:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`.
+
+## Project Structure
+
+- `src/components/`: Reusable UI components like Navbar and Footer.
+- `src/pages/`: Main application screens (Home, Login, Register, AddPost).
+- `db.json`: Local database for posts and users.
